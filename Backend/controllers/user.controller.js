@@ -3,7 +3,7 @@ const bcrypt=require("bcrypt")
 const {generateToken}=require("../config/token")
 
 const register=async(req,res)=>{
-    const {name,email,password}=req.body
+    const {name,email,password,role}=req.body
     try {
         const user=await UserModel.findOne({email})
         if(!user){
@@ -12,9 +12,9 @@ const register=async(req,res)=>{
               if(err){
                 res.status(400).json({msg:err.message})
               }else{
-                const newUser=new UserModel({name,email,password:hash})
+                const newUser=new UserModel({name,email,password:hash,role})
                 newUser.save()
-                const token=generateToken(newUser._id)
+                const token=generateToken(newUser.role)
                 res.status(200).json({msg:"User Registered Successfully",newUser,token})
               }
             });
@@ -34,7 +34,7 @@ const login=async(req,res)=>{
             bcrypt.compare(password, user.password, async (err, result) =>{
               // result == true
               if(result){
-                const token =generateToken(user._id)
+                const token =generateToken(user.role)
                 res.status(200).json({msg:"Login Successfull",token})
               }else{
                 res.status(200).json({msg:"Please Check Your Password"})
