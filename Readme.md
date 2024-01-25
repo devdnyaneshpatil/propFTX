@@ -132,7 +132,7 @@ This is a movie listing platform where users can browse, search, and save movies
 ## Deployed Links
 
 - **Backend:** [https://movieflix-ht2n.onrender.com]
-- **Frontend:** 
+- **Frontend:** [https://prop-ftx.vercel.app/]
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
