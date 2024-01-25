@@ -6,6 +6,7 @@ const auth = (req, res, next) => {
     const decoded = validateToken(token);
     if (decoded) {
        req.role = decoded.userRole;
+       req.userId=decoded.userId
       next();
     } else {
       res.status(201).json({ msg: "Not authorized" });

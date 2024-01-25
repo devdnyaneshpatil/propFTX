@@ -41,4 +41,23 @@ const deleteMovie = async (req, res) => {
     }
 };
 
-module.exports = { getMovies, addMovie, updateMovie, deleteMovie };
+
+const searchMovie=async(req,res)=>{
+    const keyword = req.query.search
+      ? {
+          $or: [
+            {
+              title: { $regex: req.query.search, $options: "i" },
+              genre: { $regex: req.query.search, $options: "i" },
+            },
+          ],
+        }
+      : {};
+    const moives = await MovieModel.find(keyword)
+    res.status(200).json({msg:moives});
+}
+
+
+
+
+module.exports = { getMovies, addMovie, updateMovie, deleteMovie,searchMovie };

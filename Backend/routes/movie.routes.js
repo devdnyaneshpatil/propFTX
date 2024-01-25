@@ -17,4 +17,7 @@ movieRouter.patch("/update/:id", auth,authorize(["admin"]),updateMovie);
 //deleting a movie only for admin
 movieRouter.delete("/delete/:id", auth,authorize(["admin"]),deleteMovie);
 
+//searching a movie
+movieRouter.get("/",searchMovie)
+
 module.exports=movieRouter

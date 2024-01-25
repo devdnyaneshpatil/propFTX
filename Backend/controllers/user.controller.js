@@ -14,7 +14,7 @@ const register=async(req,res)=>{
               }else{
                 const newUser=new UserModel({name,email,password:hash,role})
                 newUser.save()
-                const token=generateToken(newUser.role)
+                const token=generateToken(newUser.role,user._id)
                 res.status(200).json({msg:"User Registered Successfully",newUser,token})
               }
             });
@@ -34,7 +34,7 @@ const login=async(req,res)=>{
             bcrypt.compare(password, user.password, async (err, result) =>{
               // result == true
               if(result){
-                const token =generateToken(user.role)
+                const token =generateToken(user.role,user._id)
                 res.status(200).json({msg:"Login Successfull",token})
               }else{
                 res.status(200).json({msg:"Please Check Your Password"})
@@ -48,4 +48,21 @@ const login=async(req,res)=>{
     }
 }
 
-module.exports={register,login}
+const watchlist=async(req,res)=>{
+  const userId = req.user.userId;
+  const  movieId  = req.params.id;
+
+  const user = await UserModel.find({_id:userId});
+  if (!user) {
+    return res.status(404).json({ msg: "User not found" });
+  }
+
+  if (!user.saved.includes(movieId)) {
+    user.watchlist.push(movieId);
+    await user.save();
+    res.send({ user: user, msg: "Movie Added to Watchlist " });
+  } else {
+    res.status(409).json({ msg: "Movie is already in the watchlist" });
+  }
+}
+module.exports={register,login,watchlist}

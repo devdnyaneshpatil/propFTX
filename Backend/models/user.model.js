@@ -18,7 +18,15 @@ const userSchema=mongoose.Schema({
         type:String,
         enum:["user","admin"],
         default:"user"
-    }
+    },
+    saved:
+        [
+           { 
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"movie"
+           }
+     ]
+    
 })
 
 const UserModel=mongoose.model("user",userSchema)
