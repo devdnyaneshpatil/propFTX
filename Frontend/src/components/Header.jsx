@@ -1,7 +1,15 @@
 import React from "react";
 import "./Header.css"; // Import your CSS file
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
+  function hadleLogout(){
+    navigate("/")
+  }
+  function handleCart(){
+    navigate("/cart")
+  }
   return (
     <div className="navbar">
       <div className="logo">MovieFlix</div>
@@ -10,8 +18,8 @@ function Header() {
         <button>Search</button>
       </div>
       <div className="user-actions">
-        <button>Logout</button>
-        <button>Saved</button>
+        <button onClick={hadleLogout}>Logout</button>
+        <button onClick={handleCart}>Saved </button>
       </div>
     </div>
   );

@@ -26,10 +26,10 @@ const getMovies = async (req, res) => {
 
   try {
     const movies = await MovieModel.find(query)
-      .sort(sortQuery)
-      .limit(3 * 1)
-      .skip((page - 1) * limit)
-      .exec();
+      // .sort(sortQuery)
+      // .limit(3 * 1)
+      // .skip((page - 1) * limit)
+      // .exec();
     res.status(200).json({msg:movies});
   } catch (e) {
     res

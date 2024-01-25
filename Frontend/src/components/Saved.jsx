@@ -1,36 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Content.css";
 
-function Content() {
+function Saved() {
   const [movies, setMovies] = useState([]);
   const movieToken = JSON.parse(localStorage.getItem("movieToken"));
-
-  const saveToWatchlist = async (movieId) => {
-    try {
-      const response = await fetch(
-        `http://localhost:8080/users/watchlist/${movieId}`,
-        {
-          method: "PUT",
-          headers: {
-            authorization: `Bearer ${movieToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      if (response.ok) {
-        console.log("Movie saved to watchlist!");
-        // You can handle additional UI updates or feedback here
-      } else {
-        console.error("Error saving movie to watchlist:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error saving movie to watchlist:", error);
-    }
-  };
-
   useEffect(() => {
-    fetch("http://localhost:8080/movies", {
+    fetch("http://localhost:8080/users/watchlist", {
       method: "GET",
       headers: {
         authorization: `Bearer ${movieToken}`,
@@ -58,7 +33,7 @@ function Content() {
               onClick={() => saveToWatchlist(movie._id)}
               className="save-button"
             >
-              Save to Watchlist
+              Remove from Watchlist
             </button>
           </div>
         </div>
@@ -67,4 +42,4 @@ function Content() {
   );
 }
 
-export default Content;
+export default Saved
