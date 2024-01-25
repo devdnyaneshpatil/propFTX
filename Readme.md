@@ -75,6 +75,60 @@ This is a movie listing platform where users can browse, search, and save movies
   - Error: 400 Bad Request, Error message.
 
 
+### Movie Routes
+
+#### 1. Get Movies
+- **Endpoint:** `GET /`
+- **Description:** Retrieves all movies.
+- **Authentication:** Requires authentication.
+- **Authorization:** All authenticated users.
+- **Response:**
+  - Success: 200 OK, List of movies.
+  - Error: 400 Bad Request, Error message.
+
+#### 2. Add Movie
+- **Endpoint:** `POST /add`
+- **Description:** Adds a new movie.
+- **Authentication:** Requires authentication.
+- **Authorization:** Only for users with the role "admin".
+- **Parameters:**
+  - `payload` (object): Movie details.
+- **Response:**
+  - Success: 200 OK, Movie added successfully, along with movie details.
+  - Error: 400 Bad Request, Error message.
+
+#### 3. Update Movie
+- **Endpoint:** `PATCH /update/:id`
+- **Description:** Updates an existing movie.
+- **Authentication:** Requires authentication.
+- **Authorization:** Only for users with the role "admin".
+- **Parameters:**
+  - `payload` (object): Updated movie details.
+  - `id` (string): Movie ID.
+- **Response:**
+  - Success: 200 OK, Movie updated successfully, along with updated movie details.
+  - Error: 400 Bad Request, Error message.
+
+#### 4. Delete Movie
+- **Endpoint:** `DELETE /delete/:id`
+- **Description:** Deletes a movie.
+- **Authentication:** Requires authentication.
+- **Authorization:** Only for users with the role "admin".
+- **Parameters:**
+  - `id` (string): Movie ID.
+- **Response:**
+  - Success: 200 OK, Movie deleted successfully.
+  - Error: 400 Bad Request, Error message.
+
+#### 5. Search Movie
+- **Endpoint:** `GET /`
+- **Description:** Searches for movies based on the provided keyword.
+- **Parameters:**
+  - `search` (string): Keyword to search for in movie titles and genres.
+- **Response:**
+  - Success: 200 OK, List of movies matching the search criteria.
+  - Error: 400 Bad Request, Error message.
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
