@@ -129,6 +129,11 @@ This is a movie listing platform where users can browse, search, and save movies
   - Success: 200 OK, List of movies matching the search criteria.
   - Error: 400 Bad Request, Error message.
 
+## Deployed Links
+
+- **Backend:** [https://movieflix-kju5.onrender.com]
+- **Frontend:** 
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
