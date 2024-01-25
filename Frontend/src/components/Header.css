@@ -1,7 +1,7 @@
 /* Header.css */
 
 .navbar {
-  background-color: #333;
+  background-color: #7187d9;
   color: #fff;
   padding: 10px;
   display: flex;
@@ -15,13 +15,15 @@
 }
 
 .search-container {
-  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
   margin: 0 20px;
 }
 
 input {
   padding: 8px;
-  width: 70%;
+  width: 300px;
+  margin-right:5px ;
   border: none;
   border-radius: 4px;
 }
@@ -29,7 +31,7 @@ input {
 button {
   padding: 8px 12px;
   background-color: #007bff;
-  color: #fff;
+  color: #1d0707;
   border: none;
   border-radius: 4px;
   cursor: pointer;

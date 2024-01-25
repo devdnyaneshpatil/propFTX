@@ -10,7 +10,7 @@ const movieSchema = mongoose.Schema({
     required: true,
   },
   releaseDate: {
-    type: Date,
+    type: String,
     required: true,
   },
   rating: {
@@ -18,6 +18,9 @@ const movieSchema = mongoose.Schema({
     min: 1,
     max: 10,
     default: 5
+  },
+  img:{
+    type:String
   }
 },{
     timestamps:true

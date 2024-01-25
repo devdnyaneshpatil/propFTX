@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css"; // Import your CSS file
+import "./Login.css"; 
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -8,15 +8,41 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
-    // Add your login logic here
+
     e.preventDefault()
-    // For demonstration purposes, log the email and password to the console
+   
     const payload={
         email,
         password
     }
 
-    // You can replace the above console logs with your actual login logic
+    fetch("http://localhost:8080/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        
+        console.log("Login successful:", data);
+        alert(data.msg)
+        localStorage.setItem("movieToken",JSON.stringify(data.token))
+       
+        if(data.msg=="Login Successfull"){
+          navigate("/home")
+        }
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("Error during login:", error.message);
+      });
   };
 
   const handleSignupRedirect = () => {

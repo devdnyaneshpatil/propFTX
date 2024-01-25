@@ -1,16 +1,18 @@
 /* Signup.css */
 
-body {
+/* body {
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f0f0f0; /* Set a background color for the body */
-}
+  background-color: #f0f0f0; 
+} */
 
 .main-container {
   text-align: center;
+  margin-top: 200px;
+  margin-left: 500px;
 }
 
 .login-container {
