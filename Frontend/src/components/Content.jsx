@@ -16,7 +16,7 @@ function Content() {
       .then((response) => {
         if (response.ok) {
           console.log("Movie saved to watchlist!");
-          // You can handle additional UI updates or feedback here
+        
         } else {
           console.error(
             "Error saving movie to watchlist:",
