@@ -4,31 +4,32 @@ import "./Content.css";
 function Content() {
   const [movies, setMovies] = useState([]);
   const movieToken = JSON.parse(localStorage.getItem("movieToken"));
-
-  const saveToWatchlist = async (movieId) => {
-    try {
-      const response = await fetch(
-        `https://movieflix-ht2n.onrender.com/users/watchlist/${movieId}`,
-        {
-          method: "PUT",
-          headers: {
-            authorization: `Bearer ${movieToken}`,
-            "Content-Type": "application/json",
-          },
+  
+  const saveToWatchlist = (movieId) => {
+    fetch(`https://movieflix-ht2n.onrender.com/users/watchlist/${movieId}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${movieToken}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Movie saved to watchlist!");
+          // You can handle additional UI updates or feedback here
+        } else {
+          console.error(
+            "Error saving movie to watchlist:",
+            response.statusText
+          );
         }
-      );
-
-      if (response.ok) {
-        console.log("Movie saved to watchlist!");
-        // You can handle additional UI updates or feedback here
-      } else {
-        console.error("Error saving movie to watchlist:", response.statusText);
-      }
-    } catch (error) {
-      console.error("Error saving movie to watchlist:", error);
-    }
+      })
+      .catch((error) => {
+        console.error("Error saving movie to watchlist:", error);
+      });
   };
 
+  
   useEffect(() => {
     fetch("https://movieflix-ht2n.onrender.com/movies", {
       method: "GET",
