@@ -8,7 +8,7 @@ function Content() {
   const saveToWatchlist = async (movieId) => {
     try {
       const response = await fetch(
-        `http://localhost:8080/users/watchlist/${movieId}`,
+        `https://movieflix-ht2n.onrender.com/users/watchlist/${movieId}`,
         {
           method: "PUT",
           headers: {
@@ -30,7 +30,7 @@ function Content() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/movies", {
+    fetch("https://movieflix-ht2n.onrender.com/movies", {
       method: "GET",
       headers: {
         authorization: `Bearer ${movieToken}`,

@@ -16,7 +16,7 @@ function Login() {
         password
     }
 
-    fetch("http://localhost:8080/users/login", {
+    fetch("https://movieflix-ht2n.onrender.com/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,13 +30,12 @@ function Login() {
         return response.json();
       })
       .then((data) => {
-        
         console.log("Login successful:", data);
-        alert(data.msg)
-        localStorage.setItem("movieToken",JSON.stringify(data.token))
-       
-        if(data.msg=="Login Successfull"){
-          navigate("/home")
+        alert(data.msg);
+        localStorage.setItem("movieToken", JSON.stringify(data.token));
+
+        if (data.msg == "Login Successfull") {
+          navigate("/home");
         }
       })
       .catch((error) => {

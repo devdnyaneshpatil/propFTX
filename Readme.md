@@ -131,7 +131,7 @@ This is a movie listing platform where users can browse, search, and save movies
 
 ## Deployed Links
 
-- **Backend:** [https://movieflix-kju5.onrender.com]
+- **Backend:** [https://movieflix-ht2n.onrender.com]
 - **Frontend:** 
 
 ## Contributing

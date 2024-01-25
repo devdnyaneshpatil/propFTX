@@ -17,7 +17,7 @@ function Signup() {
       password,
     };
 
-    fetch("http://localhost:8080/users/register", {
+    fetch("https://movieflix-ht2n.onrender.com/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

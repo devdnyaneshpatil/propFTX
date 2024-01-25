@@ -5,7 +5,7 @@ function Saved() {
   const [movies, setMovies] = useState([]);
   const movieToken = JSON.parse(localStorage.getItem("movieToken"));
   useEffect(() => {
-    fetch("http://localhost:8080/users/watchlist", {
+    fetch("https://movieflix-ht2n.onrender.com/users/watchlist", {
       method: "GET",
       headers: {
         authorization: `Bearer ${movieToken}`,
