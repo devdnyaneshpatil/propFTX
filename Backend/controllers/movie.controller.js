@@ -1,5 +1,6 @@
 const MovieModel = require("../models/movie.model");
 const moment = require("moment");
+const UserModel = require("../models/user.model");
 
 const getMovies = async (req, res) => {
   const { page = 1, search = "", year, sort, order = "asc" } = req.query;
@@ -77,5 +78,6 @@ const deleteMovie = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
+
 
 module.exports = { getMovies, addMovie, updateMovie, deleteMovie };

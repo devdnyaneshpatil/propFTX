@@ -14,7 +14,7 @@ const register=async(req,res)=>{
               }else{
                 const newUser=new UserModel({name,email,password:hash,role})
                 newUser.save()
-                const token=generateToken(newUser.role,user._id)
+                const token = generateToken(newUser.role, newUser._id);
                 res.status(200).json({msg:"User Registered Successfully",newUser,token})
               }
             });
@@ -49,20 +49,31 @@ const login=async(req,res)=>{
 }
 
 const watchlist=async(req,res)=>{
-  const userId = req.user.userId;
+  const userId = req.userId;
   const  movieId  = req.params.id;
 
-  const user = await UserModel.find({_id:userId});
+  const user = await UserModel.findOne({_id:userId});
   if (!user) {
     return res.status(404).json({ msg: "User not found" });
   }
+  // console.log(user.saved)
 
   if (!user.saved.includes(movieId)) {
-    user.watchlist.push(movieId);
+    user.saved.push(movieId);
     await user.save();
-    res.send({ user: user, msg: "Movie Added to Watchlist " });
+    res.send({ user: user, msg: "Movie Added to saved " });
   } else {
-    res.status(409).json({ msg: "Movie is already in the watchlist" });
+    res.status(409).json({ msg: "Movie is already saved" });
   }
 }
-module.exports={register,login,watchlist}
+
+const getSaved = async (req, res) => {
+  const userId = req.userId;
+  try {
+    const user = await UserModel.findOne({ _id: userId }).populate('saved')
+    res.status(200).json({msg:user.saved})
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+};
+module.exports={register,login,watchlist,getSaved}
