@@ -74,18 +74,6 @@ This is a movie listing platform where users can browse, search, and save movies
   - Not Found: 404 Not Found, User not found.
   - Error: 400 Bad Request, Error message.
 
-## Installation
-1. Clone the repository: `git clone https://github.com/your-username/your-repository.git`
-2. Navigate to the project directory: `cd your-repository`
-3. Install dependencies: `npm install`
-4. Create a `.env` file with MongoDB URL, JWT secret key, and port number.
-5. Start the server: `npm run server`
-
-## Tech Stack
-- **Express:** Backend web application framework for Node.js.
-- **MongoDB:** NoSQL database for storing user data.
-- **bcrypt:** Library for hashing passwords securely.
-- **jsonwebtoken (JWT):** Token-based authentication for securing routes.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
