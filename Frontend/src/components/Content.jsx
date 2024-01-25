@@ -6,27 +6,26 @@ function Content() {
   const movieToken = JSON.parse(localStorage.getItem("movieToken"));
   
   const saveToWatchlist = (movieId) => {
-    fetch(`https://movieflix-ht2n.onrender.com/users/watchlist/${movieId}`, {
-      method: "PUT",
-      headers: {
-        authorization: `Bearer ${movieToken}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Movie saved to watchlist!");
-        
-        } else {
-          console.error(
-            "Error saving movie to watchlist:",
-            response.statusText
-          );
-        }
-      })
-      .catch((error) => {
-        console.error("Error saving movie to watchlist:", error);
-      });
+    // fetch(`https://movieflix-ht2n.onrender.com/users/watchlist/${movieId}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     authorization: `Bearer ${movieToken}`,
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => {
+    //     if (response.ok) {
+    //       console.log("Movie saved to watchlist!");
+    //     } else {
+    //       console.error(
+    //         "Error saving movie to watchlist:",
+    //         response.statusText
+    //       );
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error saving movie to watchlist:", error);
+    //   });
   };
 
   
