@@ -3,9 +3,10 @@ import Navbar from "../components/Navbar";
 import { Container, Box, Heading, Button, ButtonGroup } from "@chakra-ui/react";
 
 function Landing() {
+    const page="landing"
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar page={page}></Navbar>
       <Box
         backgroundImage="url('https://st3.depositphotos.com/1064045/15061/i/450/depositphotos_150614902-stock-photo-unusual-cinema-concept-3d-illustration.jpg')"
         backgroundSize="cover"

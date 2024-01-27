@@ -3,9 +3,10 @@ import Content from '../components/Content';
 import Navbar from '../components/Navbar';
 
 function Home() {
+  const page='home'
   return (
     <div>
-        <Navbar/>
+        <Navbar page={page}/>
         <Content/>
     </div>
   );

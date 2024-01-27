@@ -51,19 +51,20 @@ const login=async(req,res)=>{
 const watchlist=async(req,res)=>{
   const userId = req.userId;
   const  movieId  = req.params.id;
-
-  const user = await UserModel.findOne({_id:userId});
-  if (!user) {
-    return res.status(404).json({ msg: "User not found" });
-  }
-  // console.log(user.saved)
-
-  if (!user.saved.includes(movieId)) {
-    user.saved.push(movieId);
-    await user.save();
-    res.send({ user: user, msg: "Movie Added to saved " });
-  } else {
-    res.status(409).json({ msg: "Movie is already saved" });
+  try {
+    const user = await UserModel.findOne({ _id: userId });
+     if (!user) {
+       return res.status(200).json({ msg: "User not found" });
+     }
+     if (!user.saved.includes(movieId)) {
+       user.saved.push(movieId);
+       await user.save();
+       res.status(200).json({ user: user, msg: "Movie Added to saved " });
+     } else {
+       res.status(200).json({ msg: "Movie is already saved" });
+     }
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
   }
 }
 
@@ -76,4 +77,26 @@ const getSaved = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
-module.exports={register,login,watchlist,getSaved}
+
+const deleteSaved=async(req,res)=>{
+  const userId = req.userId;
+  const movieId = req.params.id;
+  try {
+    const user = await UserModel.findOne({ _id: userId });
+    if (!user) {
+      return res.status(200).json({ msg: "User not found" });
+    }
+    if (user.saved.includes(movieId)) {
+      user.saved.pull(movieId);
+      await user.save();
+      const movies = await UserModel.populate(user, { path: "saved" });
+      res.status(200).json({ movies:movies.saved, user: user, msg: "Movie removed from saved " });
+    } else {
+      res.status(200).json({ msg: "Movie is not saved" });
+    }
+  } catch (error) {
+    res.status(400).json({ msg: error.message });
+  }
+}
+
+module.exports={register,login,watchlist,getSaved,deleteSaved}
