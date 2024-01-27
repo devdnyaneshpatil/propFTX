@@ -1,14 +1,12 @@
-import React from 'react'
-import Header from "../components/Header"
-import Footer from '../components/Footer';
+import React from 'react';
 import Content from '../components/Content';
+import Navbar from '../components/Navbar';
 
 function Home() {
   return (
     <div>
-        <Header/>
+        <Navbar/>
         <Content/>
-        <Footer/>
     </div>
   );
 }
