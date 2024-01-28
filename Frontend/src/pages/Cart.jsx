@@ -13,7 +13,7 @@ function Cart() {
   const toast = useToast();
   const task= "Remove From"
   const removeWatchlist = (movieId) => {
-    fetch(`http://localhost:8080/users/watchlist/${movieId}`, {
+    fetch(`https://flix-rgt6.onrender.com/watchlist/${movieId}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${movieToken}`,
@@ -28,7 +28,7 @@ function Cart() {
       })
       .then((data) => {
         console.log(data);
-        setMovies(data.movies)
+        setMovies(data.movies);
         toast({
           title: "Success",
           description: data.msg,
