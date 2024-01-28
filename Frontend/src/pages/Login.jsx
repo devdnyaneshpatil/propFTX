@@ -29,7 +29,7 @@ function Login() {
       password,
     };
 
-    fetch("https://movieflix-ht2n.onrender.com/users/login", {
+    fetch("https://flix-rgt6.onrender.com/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -34,7 +34,7 @@ function Signup() {
       password,
     };
 
-    fetch("https://movieflix-ht2n.onrender.com/users/register", {
+    fetch("https://flix-rgt6.onrender.com/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

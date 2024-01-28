@@ -10,7 +10,7 @@ function Content() {
   const task='Add To'
 
   const addWatchlist = (movieId) => {
-    fetch(`http://localhost:8080/users/watchlist/${movieId}`, {
+    fetch(`https://flix-rgt6.onrender.com/users/watchlist/${movieId}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${movieToken}`,
@@ -19,9 +19,8 @@ function Content() {
     })
       .then((res) => {
         if (res.status === 409) {
-          
           console.log("Movie is already in watchlist");
-          return; 
+          return;
         }
         if (!res.ok) {
           throw new Error(`Request failed with status ${res.status}`);
@@ -36,9 +35,8 @@ function Content() {
           status: "success",
           duration: 2000,
           isClosable: true,
-          position:"top"
+          position: "top",
         });
-
       })
       .catch((error) => {
         console.log("Error:", error.message);
@@ -51,16 +49,13 @@ function Content() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        "https://movieflix-ht2n.onrender.com/movies",
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${movieToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch("https://flix-rgt6.onrender.com/movies", {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${movieToken}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (!response.ok) {
         throw new Error("Could not fetch the data for that resource");
